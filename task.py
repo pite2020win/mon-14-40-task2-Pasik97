@@ -22,3 +22,31 @@
 #Delete these comments before commit!
 #
 #Good luck.
+
+import random
+
+class Plane:
+  def __init__(self):
+    self.roll = 0;
+    self.correction = 0;
+
+  def find_correction(self):
+    randomCorrection = random.randint(0, 10)
+
+    while self.roll - random.gauss(0, 2*randomCorrection) < 0.0001: 
+      randomCorrection = random.randint(0, 10)
+
+    self.correction = randomCorrection
+
+  def roll_with_correction(self):
+    return self.roll - random.gauss(0, 2*self.correction)
+
+
+if __name__ == '__main__':
+  start = 1;
+  plane = Plane();
+  while start:
+    plane.roll += random.gauss(0, 2*random.randint(0, 10))
+    print("Plane roll: {}".format(plane.roll))
+    plane.find_correction()
+    print(plane.roll_with_correction())
