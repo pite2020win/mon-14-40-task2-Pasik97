@@ -25,7 +25,7 @@ class Plane:
     self.apply_correction(new_angle)
 
   def apply_correction(self, angle):
-    self.roll = self.correction.create_angle(angle)
+    self.roll += self.correction.create_angle(angle)
     print('Plane roll after correction: {}'.format(self.roll))
 
 class Environment:
